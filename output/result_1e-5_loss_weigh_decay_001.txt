@@ -1,0 +1,515 @@
+VGCN_BERT Start at: Wed May  5 15:56:47 2021
+
+----- Configure ----- 
+  cfg_ds: cola 
+  stop_words: False 
+  Vocab GCN_hidden_dim: vocab_size -> 128 -> 16 
+  Learning_rate0: 1e-05 weight_decay: 0.001 
+  Loss_criterion mse softmax_before_mse True 
+  Dropout: 0.2 Run_adj: pmi gcn_act_func: Relu 
+  MAX_SEQ_LENGTH: 216 
+  perform_metrics_str: ['macro avg', 'f1-score'] 
+  model_file_save: VGCN_BERT16_model_cola_mse_sw0.pt
+
+----- Prepare data set -----
+  Load/shuffle/seperate cola dataset, and vocabulary graph adjacent matrix
+  Zero ratio(?>66%) for vocab adj 0th: 99.54401583
+weight:  [0.696848424212106, 1.770012706480305]
+  Train_classes count: [3998, 1574]
+  Num examples for train = 5572 , after weight sample: 5574
+  Num examples for validate = 293
+  Batch size = 6
+  Num steps = 8361
+
+----- Running training -----
+I0505 15:56:55.609291 139785740138304 modeling.py:711] loading weights file https://users.dcc.uchile.cl/~jperez/beto/cased_2M/pytorch_weights.tar.gz from cache at /home/predator/.cache/torch/pytorch_pretrained_bert/df30d853f09ef62a7d4844183e66936b439beef5edd7a7a442b2123852711a8d.c4248f9616f68e3dcf9a9dccdcc51faf65949e7f7561cbe86df00900357a2a6b
+I0505 15:56:55.609652 139785740138304 modeling.py:713] loading configuration file https://users.dcc.uchile.cl/~jperez/beto/cased_2M/config.json from cache at /home/predator/.cache/torch/pytorch_pretrained_bert/d7d4898a7ece6a2c902b3a860b0a2fd1c5cddace7c6ccd97cee5afe1b01baf2a.0e60f4036bcda3dd4fd2e574bc7ee7170cc8e06d50963217befc3ce3ae164d7f
+I0505 15:56:55.637990 139785740138304 modeling.py:716] Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "type_vocab_size": 2,
+  "vocab_size": 31002
+}
+
+I0505 15:56:55.638387 139785740138304 modeling.py:717] HERE /home/predator/.cache/torch/pytorch_pretrained_bert/df30d853f09ef62a7d4844183e66936b439beef5edd7a7a442b2123852711a8d.c4248f9616f68e3dcf9a9dccdcc51faf65949e7f7561cbe86df00900357a2a6b
+I0505 15:57:06.077712 139785740138304 modeling.py:763] Weights of VGCN_Bert not initialized from pretrained model: ['bert.embeddings.vocab_gcn.W0_vh', 'bert.embeddings.vocab_gcn.fc_hc.weight', 'bert.embeddings.vocab_gcn.fc_hc.bias', 'bert.classifier.weight', 'bert.classifier.bias']
+Epoch:0-0/929, Train mse Loss: 0.2669152617454529, Cumulated time: 0.07276676098505656m 
+Epoch:0-40/929, Train mse Loss: 0.30862653255462646, Cumulated time: 0.2546146710713704m 
+Epoch:0-80/929, Train mse Loss: 0.12394040822982788, Cumulated time: 0.44064064423243204m 
+Epoch:0-120/929, Train mse Loss: 0.1836676448583603, Cumulated time: 0.62066277662913m 
+Epoch:0-160/929, Train mse Loss: 0.18510138988494873, Cumulated time: 0.8023865540822347m 
+Epoch:0-200/929, Train mse Loss: 0.0759691521525383, Cumulated time: 0.9835426449775696m 
+Epoch:0-240/929, Train mse Loss: 0.24501335620880127, Cumulated time: 1.1726106882095337m 
+Epoch:0-280/929, Train mse Loss: 0.07579268515110016, Cumulated time: 1.36858203013738m 
+Epoch:0-320/929, Train mse Loss: 0.18436741828918457, Cumulated time: 1.5756495078404744m 
+Epoch:0-360/929, Train mse Loss: 0.0640551894903183, Cumulated time: 1.7904947638511657m 
+Epoch:0-400/929, Train mse Loss: 0.20984742045402527, Cumulated time: 2.00182607571284m 
+Epoch:0-440/929, Train mse Loss: 0.19397982954978943, Cumulated time: 2.1971421281496686m 
+Epoch:0-480/929, Train mse Loss: 0.2651102840900421, Cumulated time: 2.3846741994222005m 
+Epoch:0-520/929, Train mse Loss: 0.06236394867300987, Cumulated time: 2.5709920644760134m 
+Epoch:0-560/929, Train mse Loss: 0.10975133627653122, Cumulated time: 2.7662865201632183m 
+Epoch:0-600/929, Train mse Loss: 0.04223655164241791, Cumulated time: 2.9643567323684694m 
+Epoch:0-640/929, Train mse Loss: 0.006194561719894409, Cumulated time: 3.1527172287305194m 
+Epoch:0-680/929, Train mse Loss: 0.08177144825458527, Cumulated time: 3.3455316623051963m 
+Epoch:0-720/929, Train mse Loss: 0.020410574972629547, Cumulated time: 3.542605090141296m 
+Epoch:0-760/929, Train mse Loss: 0.0077486298978328705, Cumulated time: 3.7427564303080243m 
+Epoch:0-800/929, Train mse Loss: 0.13543196022510529, Cumulated time: 3.935108216603597m 
+Epoch:0-840/929, Train mse Loss: 0.2386963665485382, Cumulated time: 4.170781028270722m 
+Epoch:0-880/929, Train mse Loss: 0.222407728433609, Cumulated time: 4.372912756601969m 
+Epoch:0-920/929, Train mse Loss: 0.05202820897102356, Cumulated time: 4.5761832674344385m 
+--------------------------------------------------------------
+Report:
+              precision    recall  f1-score   support
+
+           0     0.8327    0.9952    0.9067       210
+           1     0.9762    0.4940    0.6560        83
+
+    accuracy                         0.8532       293
+   macro avg     0.9044    0.7446    0.7814       293
+weighted avg     0.8733    0.8532    0.8357       293
+
+avg f1 score: 0.7813622559652929
+Epoch : 0, macro avg f1-score: 78.136 Acc : 85.324 on Valid_set, Spend:0.077 minutes for evaluation
+--------------------------------------------------------------
+Report:
+              precision    recall  f1-score   support
+
+           0     0.7886    0.9862    0.8764      1014
+           1     0.9296    0.4084    0.5675       453
+
+    accuracy                         0.8078      1467
+   macro avg     0.8591    0.6973    0.7220      1467
+weighted avg     0.8322    0.8078    0.7810      1467
+
+avg f1 score: 0.721954425942156
+Epoch : 0, macro avg f1-score: 72.195 Acc : 80.777 on Test_set, Spend:0.369 minutes for evaluation
+--------------------------------------------------------------
+Epoch:0 completed, Total Train Loss:134.1717419908382, Valid Loss:5.6438673690427095, Spend 5.063277137279511m 
+Epoch:1-0/929, Train mse Loss: 0.08655080199241638, Cumulated time: 5.084614030520121m 
+Epoch:1-40/929, Train mse Loss: 0.042349837720394135, Cumulated time: 5.294404145081838m 
+Epoch:1-80/929, Train mse Loss: 0.039868228137493134, Cumulated time: 5.540611477692922m 
+Epoch:1-120/929, Train mse Loss: 0.08340981602668762, Cumulated time: 5.791757392883301m 
+Epoch:1-160/929, Train mse Loss: 0.09878478944301605, Cumulated time: 6.022624739011129m 
+Epoch:1-200/929, Train mse Loss: 0.0964873656630516, Cumulated time: 6.223724007606506m 
+Epoch:1-240/929, Train mse Loss: 0.04130437225103378, Cumulated time: 6.4279427568117775m 
+Epoch:1-280/929, Train mse Loss: 0.000878963794093579, Cumulated time: 6.63521648645401m 
+Epoch:1-320/929, Train mse Loss: 0.04583724960684776, Cumulated time: 6.841053195794424m 
+Epoch:1-360/929, Train mse Loss: 0.010076874867081642, Cumulated time: 7.045990244547526m 
+Epoch:1-400/929, Train mse Loss: 0.04581233859062195, Cumulated time: 7.251557862758636m 
+Epoch:1-440/929, Train mse Loss: 0.04983672499656677, Cumulated time: 7.45561431646347m 
+Epoch:1-480/929, Train mse Loss: 0.08518772572278976, Cumulated time: 7.657277806599935m 
+Epoch:1-520/929, Train mse Loss: 0.12574021518230438, Cumulated time: 7.858346271514892m 
+Epoch:1-560/929, Train mse Loss: 0.008663668297231197, Cumulated time: 8.060650130112966m 
+Epoch:1-600/929, Train mse Loss: 0.0018468827474862337, Cumulated time: 8.263194024562836m 
+Epoch:1-640/929, Train mse Loss: 0.009587216190993786, Cumulated time: 8.462509695688883m 
+Epoch:1-680/929, Train mse Loss: 0.009513196535408497, Cumulated time: 8.665604587395986m 
+Epoch:1-720/929, Train mse Loss: 0.08754395693540573, Cumulated time: 8.870779863993327m 
+Epoch:1-760/929, Train mse Loss: 0.0016644957941025496, Cumulated time: 9.074324337641398m 
+Epoch:1-800/929, Train mse Loss: 0.02773076295852661, Cumulated time: 9.277120606104534m 
+Epoch:1-840/929, Train mse Loss: 0.21938364207744598, Cumulated time: 9.480351988474528m 
+Epoch:1-880/929, Train mse Loss: 0.14095543324947357, Cumulated time: 9.679522224267323m 
+Epoch:1-920/929, Train mse Loss: 0.0011317278258502483, Cumulated time: 9.88187757730484m 
+--------------------------------------------------------------
+Report:
+              precision    recall  f1-score   support
+
+           0     0.8889    0.9524    0.9195       210
+           1     0.8529    0.6988    0.7682        83
+
+    accuracy                         0.8805       293
+   macro avg     0.8709    0.8256    0.8439       293
+weighted avg     0.8787    0.8805    0.8767       293
+
+avg f1 score: 0.8438760752074295
+Epoch : 1, macro avg f1-score: 84.388 Acc : 88.055 on Valid_set, Spend:0.076 minutes for evaluation
+--------------------------------------------------------------
+Report:
+              precision    recall  f1-score   support
+
+           0     0.8647    0.9704    0.9145      1014
+           1     0.9088    0.6600    0.7647       453
+
+    accuracy                         0.8746      1467
+   macro avg     0.8867    0.8152    0.8396      1467
+weighted avg     0.8783    0.8746    0.8682      1467
+
+avg f1 score: 0.8396020118084409
+Epoch : 1, macro avg f1-score: 83.960 Acc : 87.457 on Test_set, Spend:0.358 minutes for evaluation
+--------------------------------------------------------------
+Epoch:1 completed, Total Train Loss:77.67738849204034, Valid Loss:4.118835733170272, Spend 10.355623658498128m 
+Epoch:2-0/929, Train mse Loss: 0.0038279311265796423, Cumulated time: 10.49873942931493m 
+Epoch:2-40/929, Train mse Loss: 0.010530306026339531, Cumulated time: 10.701391295591991m 
+Epoch:2-80/929, Train mse Loss: 0.0005420110537670553, Cumulated time: 10.904855171839396m 
+Epoch:2-120/929, Train mse Loss: 0.07924126833677292, Cumulated time: 11.108081297079723m 
+Epoch:2-160/929, Train mse Loss: 0.024361765012145042, Cumulated time: 11.309983026981353m 
+Epoch:2-200/929, Train mse Loss: 0.015607028268277645, Cumulated time: 11.509071938196819m 
+Epoch:2-240/929, Train mse Loss: 0.0010718097910284996, Cumulated time: 11.714034303029377m 
+Epoch:2-280/929, Train mse Loss: 0.0002601760788820684, Cumulated time: 11.91552092631658m 
+Epoch:2-320/929, Train mse Loss: 0.004038622137159109, Cumulated time: 12.116991011301677m 
+Epoch:2-360/929, Train mse Loss: 0.016813602298498154, Cumulated time: 12.319983390967051m 
+Epoch:2-400/929, Train mse Loss: 0.03881765156984329, Cumulated time: 12.524018275737763m 
+Epoch:2-440/929, Train mse Loss: 0.009363447315990925, Cumulated time: 12.728528082370758m 
+Epoch:2-480/929, Train mse Loss: 0.006903483998030424, Cumulated time: 12.937892770767212m 
+Epoch:2-520/929, Train mse Loss: 0.03647530823945999, Cumulated time: 13.144023795922598m 
+Epoch:2-560/929, Train mse Loss: 0.0025603394024074078, Cumulated time: 13.349196410179138m 
+Epoch:2-600/929, Train mse Loss: 0.0003651828446891159, Cumulated time: 13.553640953699748m 
+Epoch:2-640/929, Train mse Loss: 0.01132380124181509, Cumulated time: 13.754658639431m 
+Epoch:2-680/929, Train mse Loss: 0.0004915345925837755, Cumulated time: 13.959175332387288m 
+Epoch:2-720/929, Train mse Loss: 0.12694159150123596, Cumulated time: 14.164087533950806m 
+Epoch:2-760/929, Train mse Loss: 0.0002697052841540426, Cumulated time: 14.37116836309433m 
+Epoch:2-800/929, Train mse Loss: 0.0017011149320751429, Cumulated time: 14.582464917500813m 
+Epoch:2-840/929, Train mse Loss: 0.16504666209220886, Cumulated time: 14.797990107536316m 
+Epoch:2-880/929, Train mse Loss: 0.002625403692945838, Cumulated time: 14.998610631624858m 
+Epoch:2-920/929, Train mse Loss: 0.15330398082733154, Cumulated time: 15.200240015983582m 
+--------------------------------------------------------------
+Report:
+              precision    recall  f1-score   support
+
+           0     0.8991    0.9333    0.9159       210
+           1     0.8133    0.7349    0.7722        83
+
+    accuracy                         0.8771       293
+   macro avg     0.8562    0.8341    0.8440       293
+weighted avg     0.8748    0.8771    0.8752       293
+
+avg f1 score: 0.8440198746007335
+Epoch : 2, macro avg f1-score: 84.402 Acc : 87.713 on Valid_set, Spend:0.078 minutes for evaluation
+--------------------------------------------------------------
+Report:
+              precision    recall  f1-score   support
+
+           0     0.8695    0.9527    0.9092      1014
+           1     0.8652    0.6799    0.7614       453
+
+    accuracy                         0.8684      1467
+   macro avg     0.8673    0.8163    0.8353      1467
+weighted avg     0.8682    0.8684    0.8636      1467
+
+avg f1 score: 0.8353051697811387
+Epoch : 2, macro avg f1-score: 83.531 Acc : 86.844 on Test_set, Spend:0.365 minutes for evaluation
+--------------------------------------------------------------
+Epoch:2 completed, Total Train Loss:41.50622909372396, Valid Loss:4.838788306395145, Spend 15.683872266610463m 
+Epoch:3-0/929, Train mse Loss: 9.39591191126965e-05, Cumulated time: 15.823373810450237m 
+Epoch:3-40/929, Train mse Loss: 0.00021184780052863061, Cumulated time: 16.024401366710663m 
+Epoch:3-80/929, Train mse Loss: 0.0007127832504920661, Cumulated time: 16.22656693458557m 
+Epoch:3-120/929, Train mse Loss: 0.0007657508249394596, Cumulated time: 16.433054172992705m 
+Epoch:3-160/929, Train mse Loss: 0.001958174630999565, Cumulated time: 16.64122124115626m 
+Epoch:3-200/929, Train mse Loss: 0.0020231667440384626, Cumulated time: 16.843673022588096m 
+Epoch:3-240/929, Train mse Loss: 0.00037494266871362925, Cumulated time: 17.04544208844503m 
+Epoch:3-280/929, Train mse Loss: 0.0006628403207287192, Cumulated time: 17.246021163463592m 
+Epoch:3-320/929, Train mse Loss: 0.001074820989742875, Cumulated time: 17.44774576028188m 
+Epoch:3-360/929, Train mse Loss: 0.00036493444349616766, Cumulated time: 17.65239988565445m 
+Epoch:3-400/929, Train mse Loss: 0.08054888248443604, Cumulated time: 17.85641529560089m 
+Epoch:3-440/929, Train mse Loss: 0.00422756839543581, Cumulated time: 18.05799755255381m 
+Epoch:3-480/929, Train mse Loss: 0.0002483780845068395, Cumulated time: 18.260082439581552m 
+Epoch:3-520/929, Train mse Loss: 0.00684443861246109, Cumulated time: 18.45935883919398m 
+Epoch:3-560/929, Train mse Loss: 0.00029655633261427283, Cumulated time: 18.658915094534557m 
+Epoch:3-600/929, Train mse Loss: 0.000779418449383229, Cumulated time: 18.862765526771547m 
+Epoch:3-640/929, Train mse Loss: 0.07688253372907639, Cumulated time: 19.064401058355966m 
+Epoch:3-680/929, Train mse Loss: 0.00034823984606191516, Cumulated time: 19.265725084145863m 
+Epoch:3-720/929, Train mse Loss: 0.000131082211737521, Cumulated time: 19.471148685614267m 
+Epoch:3-760/929, Train mse Loss: 0.00016346757183782756, Cumulated time: 19.673807887236276m 
+Epoch:3-800/929, Train mse Loss: 0.004270191304385662, Cumulated time: 19.87539917230606m 
+Epoch:3-840/929, Train mse Loss: 0.16420488059520721, Cumulated time: 20.077534703413644m 
+Epoch:3-880/929, Train mse Loss: 0.005775736179202795, Cumulated time: 20.28041492700577m 
+Epoch:3-920/929, Train mse Loss: 0.0003344905562698841, Cumulated time: 20.479521028200786m 
+--------------------------------------------------------------
+Report:
+              precision    recall  f1-score   support
+
+           0     0.9356    0.9000    0.9175       210
+           1     0.7692    0.8434    0.8046        83
+
+    accuracy                         0.8840       293
+   macro avg     0.8524    0.8717    0.8610       293
+weighted avg     0.8885    0.8840    0.8855       293
+
+avg f1 score: 0.8610367146523825
+Epoch : 3, macro avg f1-score: 86.104 Acc : 88.396 on Valid_set, Spend:0.076 minutes for evaluation
+--------------------------------------------------------------
+Report:
+              precision    recall  f1-score   support
+
+           0     0.9149    0.9014    0.9081      1014
+           1     0.7863    0.8124    0.7991       453
+
+    accuracy                         0.8739      1467
+   macro avg     0.8506    0.8569    0.8536      1467
+weighted avg     0.8752    0.8739    0.8744      1467
+
+avg f1 score: 0.8536143730248499
+Epoch : 3, macro avg f1-score: 85.361 Acc : 87.389 on Test_set, Spend:0.543 minutes for evaluation
+--------------------------------------------------------------
+Epoch:3 completed, Total Train Loss:27.13196864408019, Valid Loss:5.028040693359799, Spend 21.139375603199007m 
+Epoch:4-0/929, Train mse Loss: 0.15063612163066864, Cumulated time: 21.28725936015447m 
+Epoch:4-40/929, Train mse Loss: 0.0015860827406868339, Cumulated time: 21.564373342196145m 
+Epoch:4-80/929, Train mse Loss: 0.0006466038175858557, Cumulated time: 21.77572644551595m 
+Epoch:4-120/929, Train mse Loss: 0.0007206278387457132, Cumulated time: 21.99596024751663m 
+Epoch:4-160/929, Train mse Loss: 0.00029559098766185343, Cumulated time: 22.215168042977652m 
+Epoch:4-200/929, Train mse Loss: 0.002702741650864482, Cumulated time: 22.43301583925883m 
+Epoch:4-240/929, Train mse Loss: 0.0004650774644687772, Cumulated time: 22.65205027659734m 
+Epoch:4-280/929, Train mse Loss: 0.03891931474208832, Cumulated time: 22.870308629671733m 
+Epoch:4-320/929, Train mse Loss: 0.002595502184703946, Cumulated time: 23.089765620231628m 
+Epoch:4-360/929, Train mse Loss: 6.218669295776635e-05, Cumulated time: 23.308858708540598m 
+Epoch:4-400/929, Train mse Loss: 6.266493437578902e-05, Cumulated time: 23.52885135412216m 
+Epoch:4-440/929, Train mse Loss: 0.0013200214598327875, Cumulated time: 23.746841184298198m 
+Epoch:4-480/929, Train mse Loss: 2.9673698008991778e-05, Cumulated time: 23.966552178064983m 
+Epoch:4-520/929, Train mse Loss: 0.00013228812895249575, Cumulated time: 24.185862052440644m 
+Epoch:4-560/929, Train mse Loss: 0.0002124131133314222, Cumulated time: 24.405558896064758m 
+Epoch:4-600/929, Train mse Loss: 3.532613845891319e-05, Cumulated time: 24.624498991171517m 
+Epoch:4-640/929, Train mse Loss: 4.1111052269116044e-05, Cumulated time: 24.842126127084097m 
+Epoch:4-680/929, Train mse Loss: 0.0001572010078234598, Cumulated time: 25.068565952777863m 
+Epoch:4-720/929, Train mse Loss: 6.578004104085267e-05, Cumulated time: 25.293798347314198m 
+Epoch:4-760/929, Train mse Loss: 0.0004817217995878309, Cumulated time: 25.52442588408788m 
+Epoch:4-800/929, Train mse Loss: 0.0006874506361782551, Cumulated time: 25.755884075164794m 
+Epoch:4-840/929, Train mse Loss: 0.15705345571041107, Cumulated time: 25.985536499818167m 
+Epoch:4-880/929, Train mse Loss: 7.280291902134195e-05, Cumulated time: 26.2144922097524m 
+Epoch:4-920/929, Train mse Loss: 0.006238202564418316, Cumulated time: 26.441735923290253m 
+--------------------------------------------------------------
+Report:
+              precision    recall  f1-score   support
+
+           0     0.9289    0.8714    0.8993       210
+           1     0.7188    0.8313    0.7709        83
+
+    accuracy                         0.8601       293
+   macro avg     0.8238    0.8514    0.8351       293
+weighted avg     0.8694    0.8601    0.8629       293
+
+avg f1 score: 0.8351063099666451
+Epoch : 4, macro avg f1-score: 83.511 Acc : 86.007 on Valid_set, Spend:0.086 minutes for evaluation
+--------------------------------------------------------------
+Report:
+              precision    recall  f1-score   support
+
+           0     0.9232    0.9014    0.9122      1014
+           1     0.7904    0.8322    0.8108       453
+
+    accuracy                         0.8800      1467
+   macro avg     0.8568    0.8668    0.8615      1467
+weighted avg     0.8822    0.8800    0.8809      1467
+
+avg f1 score: 0.861464168437319
+Epoch : 4, macro avg f1-score: 86.146 Acc : 88.003 on Test_set, Spend:0.482 minutes for evaluation
+--------------------------------------------------------------
+Epoch:4 completed, Total Train Loss:15.787122296000234, Valid Loss:5.704832530071144, Spend 27.05546138683955m 
+Epoch:5-0/929, Train mse Loss: 0.006011199206113815, Cumulated time: 27.08259178797404m 
+Epoch:5-40/929, Train mse Loss: 0.00034764810698106885, Cumulated time: 27.43019570906957m 
+Epoch:5-80/929, Train mse Loss: 0.00013614646741189063, Cumulated time: 27.752640783786774m 
+Epoch:5-120/929, Train mse Loss: 2.649960879352875e-05, Cumulated time: 27.973381646474202m 
+Epoch:5-160/929, Train mse Loss: 0.00015635967429261655, Cumulated time: 28.194448844591776m 
+Epoch:5-200/929, Train mse Loss: 0.0045622834004461765, Cumulated time: 28.414770730336507m 
+Epoch:5-240/929, Train mse Loss: 0.00012089367373846471, Cumulated time: 28.633919870853425m 
+Epoch:5-280/929, Train mse Loss: 3.9533038943773136e-05, Cumulated time: 28.854734452565513m 
+Epoch:5-320/929, Train mse Loss: 7.705262396484613e-05, Cumulated time: 29.07717873652776m 
+Epoch:5-360/929, Train mse Loss: 6.7144152126275e-05, Cumulated time: 29.300225416819256m 
+Epoch:5-400/929, Train mse Loss: 3.1002309697214514e-05, Cumulated time: 29.524275533358256m 
+Epoch:5-440/929, Train mse Loss: 6.0536891396623105e-05, Cumulated time: 29.753437654177347m 
+Epoch:5-480/929, Train mse Loss: 5.131170473759994e-05, Cumulated time: 29.983104423681894m 
+Epoch:5-520/929, Train mse Loss: 0.00010335852130083367, Cumulated time: 30.212040770053864m 
+Epoch:5-560/929, Train mse Loss: 4.488770355237648e-05, Cumulated time: 30.4403142174085m 
+Epoch:5-600/929, Train mse Loss: 6.521702744066715e-05, Cumulated time: 30.667349084218344m 
+Epoch:5-640/929, Train mse Loss: 5.910012259846553e-05, Cumulated time: 30.893742418289186m 
+Epoch:5-680/929, Train mse Loss: 8.071873162407428e-05, Cumulated time: 31.12388472557068m 
+Epoch:5-720/929, Train mse Loss: 3.88632106478326e-05, Cumulated time: 31.352136178811392m 
+Epoch:5-760/929, Train mse Loss: 6.471300730481744e-05, Cumulated time: 31.582661334673563m 
+Epoch:5-800/929, Train mse Loss: 0.0003036188136320561, Cumulated time: 31.808537669976552m 
+Epoch:5-840/929, Train mse Loss: 0.1637861728668213, Cumulated time: 32.03499851226807m 
+Epoch:5-880/929, Train mse Loss: 4.020574124297127e-05, Cumulated time: 32.26422591606776m 
+Epoch:5-920/929, Train mse Loss: 7.684755109949037e-05, Cumulated time: 32.4943007349968m 
+--------------------------------------------------------------
+Report:
+              precision    recall  f1-score   support
+
+           0     0.9337    0.8714    0.9015       210
+           1     0.7216    0.8434    0.7778        83
+
+    accuracy                         0.8635       293
+   macro avg     0.8277    0.8574    0.8396       293
+weighted avg     0.8736    0.8635    0.8664       293
+
+avg f1 score: 0.8396278051450465
+Epoch : 5, macro avg f1-score: 83.963 Acc : 86.348 on Valid_set, Spend:0.083 minutes for evaluation
+--------------------------------------------------------------
+Report:
+              precision    recall  f1-score   support
+
+           0     0.9304    0.8964    0.9131      1014
+           1     0.7857    0.8499    0.8165       453
+
+    accuracy                         0.8821      1467
+   macro avg     0.8581    0.8732    0.8648      1467
+weighted avg     0.8857    0.8821    0.8833      1467
+
+avg f1 score: 0.8648259692476163
+Epoch : 5, macro avg f1-score: 86.483 Acc : 88.207 on Test_set, Spend:0.664 minutes for evaluation
+--------------------------------------------------------------
+Epoch:5 completed, Total Train Loss:11.791974867103818, Valid Loss:6.081926847087743, Spend 33.286819489796954m 
+Epoch:6-0/929, Train mse Loss: 0.002612160984426737, Cumulated time: 33.31504398187001m 
+Epoch:6-40/929, Train mse Loss: 0.06593671441078186, Cumulated time: 33.60291593869527m 
+Epoch:6-80/929, Train mse Loss: 0.00010053675941890106, Cumulated time: 33.81033440430959m 
+Epoch:6-120/929, Train mse Loss: 3.2011972507461905e-05, Cumulated time: 34.02992947101593m 
+Epoch:6-160/929, Train mse Loss: 4.56133384432178e-05, Cumulated time: 34.25559006929397m 
+Epoch:6-200/929, Train mse Loss: 2.2153302779770456e-05, Cumulated time: 34.47615749835968m 
+Epoch:6-240/929, Train mse Loss: 3.8189558836165816e-05, Cumulated time: 34.69725567499797m 
+Epoch:6-280/929, Train mse Loss: 2.4020442651817575e-05, Cumulated time: 34.91860279639562m 
+Epoch:6-320/929, Train mse Loss: 5.406298441812396e-05, Cumulated time: 35.140812122821806m 
+Epoch:6-360/929, Train mse Loss: 7.632045890204608e-05, Cumulated time: 35.363038794199625m 
+Epoch:6-400/929, Train mse Loss: 3.360041955602355e-05, Cumulated time: 35.58699160814285m 
+Epoch:6-440/929, Train mse Loss: 4.035063466290012e-05, Cumulated time: 35.814067363739014m 
+Epoch:6-480/929, Train mse Loss: 6.450860382756218e-05, Cumulated time: 36.04714488188426m 
+Epoch:6-520/929, Train mse Loss: 0.0008368423441424966, Cumulated time: 36.275008062521614m 
+Epoch:6-560/929, Train mse Loss: 2.990999746543821e-05, Cumulated time: 36.50303033987681m 
+Epoch:6-600/929, Train mse Loss: 7.124984404072165e-05, Cumulated time: 36.72968599796295m 
+Epoch:6-640/929, Train mse Loss: 3.9584137994097546e-05, Cumulated time: 36.958440045515694m 
+Epoch:6-680/929, Train mse Loss: 0.018708299845457077, Cumulated time: 37.185382409890494m 
+Epoch:6-720/929, Train mse Loss: 3.2050826121121645e-05, Cumulated time: 37.41499895652135m 
+Epoch:6-760/929, Train mse Loss: 9.757471707416698e-05, Cumulated time: 37.64295009374619m 
+Epoch:6-800/929, Train mse Loss: 0.0018592190463095903, Cumulated time: 37.873486431439716m 
+Epoch:6-840/929, Train mse Loss: 0.16245049238204956, Cumulated time: 38.10245953003565m 
+Epoch:6-880/929, Train mse Loss: 0.010077431797981262, Cumulated time: 38.329799981911975m 
+Epoch:6-920/929, Train mse Loss: 5.018501542508602e-05, Cumulated time: 38.558022514979044m 
+--------------------------------------------------------------
+Report:
+              precision    recall  f1-score   support
+
+           0     0.9261    0.8952    0.9104       210
+           1     0.7556    0.8193    0.7861        83
+
+    accuracy                         0.8737       293
+   macro avg     0.8408    0.8573    0.8483       293
+weighted avg     0.8778    0.8737    0.8752       293
+
+avg f1 score: 0.8482693949530433
+Epoch : 6, macro avg f1-score: 84.827 Acc : 87.372 on Valid_set, Spend:0.084 minutes for evaluation
+--------------------------------------------------------------
+Report:
+              precision    recall  f1-score   support
+
+           0     0.9146    0.9191    0.9169      1014
+           1     0.8170    0.8079    0.8124       453
+
+    accuracy                         0.8848      1467
+   macro avg     0.8658    0.8635    0.8647      1467
+weighted avg     0.8845    0.8848    0.8846      1467
+
+avg f1 score: 0.8646511254642462
+Epoch : 6, macro avg f1-score: 86.465 Acc : 88.480 on Test_set, Spend:0.711 minutes for evaluation
+--------------------------------------------------------------
+Epoch:6 completed, Total Train Loss:8.90500349264039, Valid Loss:5.401594551625749, Spend 39.398925705750784m 
+Epoch:7-0/929, Train mse Loss: 3.251709131291136e-05, Cumulated time: 39.42603943347931m 
+Epoch:7-40/929, Train mse Loss: 0.0003479114966467023, Cumulated time: 39.68519726594289m 
+Epoch:7-80/929, Train mse Loss: 0.0004174483474344015, Cumulated time: 39.89365402857462m 
+Epoch:7-120/929, Train mse Loss: 3.2186388125410303e-05, Cumulated time: 40.11327109336853m 
+Epoch:7-160/929, Train mse Loss: 0.00011075202928623185, Cumulated time: 40.33486742575963m 
+Epoch:7-200/929, Train mse Loss: 0.00020746966765727848, Cumulated time: 40.5539013504982m 
+Epoch:7-240/929, Train mse Loss: 4.334734330768697e-05, Cumulated time: 40.77562937339147m 
+Epoch:7-280/929, Train mse Loss: 3.489233131404035e-05, Cumulated time: 40.99532859325409m 
+Epoch:7-320/929, Train mse Loss: 6.856975960545242e-05, Cumulated time: 41.217332716782884m 
+Epoch:7-360/929, Train mse Loss: 5.506973684532568e-05, Cumulated time: 41.43989788293838m 
+Epoch:7-400/929, Train mse Loss: 2.815536572597921e-05, Cumulated time: 41.66771762371063m 
+Epoch:7-440/929, Train mse Loss: 2.8177815693197772e-05, Cumulated time: 41.896477762858076m 
+Epoch:7-480/929, Train mse Loss: 2.9131311748642474e-05, Cumulated time: 42.1260201493899m 
+Epoch:7-520/929, Train mse Loss: 2.4147744625224732e-05, Cumulated time: 42.357093556722006m 
+Epoch:7-560/929, Train mse Loss: 3.279809607192874e-05, Cumulated time: 42.58360513051351m 
+Epoch:7-600/929, Train mse Loss: 2.5326069589937106e-05, Cumulated time: 42.812059124310814m 
+Epoch:7-640/929, Train mse Loss: 7.866041414672509e-05, Cumulated time: 43.04302518765132m 
+Epoch:7-680/929, Train mse Loss: 3.9599035517312586e-05, Cumulated time: 43.2724480787913m 
+Epoch:7-720/929, Train mse Loss: 2.9014510801061988e-05, Cumulated time: 43.499633034070335m 
+Epoch:7-760/929, Train mse Loss: 6.260043301153928e-05, Cumulated time: 43.72984937429428m 
+Epoch:7-800/929, Train mse Loss: 0.00014440131781157106, Cumulated time: 43.9622572739919m 
+Epoch:7-840/929, Train mse Loss: 0.1643678992986679, Cumulated time: 44.18945865631103m 
+Epoch:7-880/929, Train mse Loss: 5.017207149649039e-05, Cumulated time: 44.41924838622411m 
+Epoch:7-920/929, Train mse Loss: 3.175123856635764e-05, Cumulated time: 44.64710624217987m 
+--------------------------------------------------------------
+Report:
+              precision    recall  f1-score   support
+
+           0     0.9275    0.9143    0.9209       210
+           1     0.7907    0.8193    0.8047        83
+
+    accuracy                         0.8874       293
+   macro avg     0.8591    0.8668    0.8628       293
+weighted avg     0.8888    0.8874    0.8880       293
+
+avg f1 score: 0.8627985185815844
+Epoch : 7, macro avg f1-score: 86.280 Acc : 88.737 on Valid_set, Spend:0.084 minutes for evaluation
+--------------------------------------------------------------
+Report:
+              precision    recall  f1-score   support
+
+           0     0.9084    0.9191    0.9137      1014
+           1     0.8141    0.7925    0.8031       453
+
+    accuracy                         0.8800      1467
+   macro avg     0.8612    0.8558    0.8584      1467
+weighted avg     0.8793    0.8800    0.8796      1467
+
+avg f1 score: 0.8584287406237663
+Epoch : 7, macro avg f1-score: 85.843 Acc : 88.003 on Test_set, Spend:0.726 minutes for evaluation
+--------------------------------------------------------------
+Epoch:7 completed, Total Train Loss:6.372300786380038, Valid Loss:5.255169277505047, Spend 45.503180321057634m 
+Epoch:8-0/929, Train mse Loss: 2.3592743673361838e-05, Cumulated time: 45.64487201372783m 
+Epoch:8-40/929, Train mse Loss: 6.60369623801671e-05, Cumulated time: 45.85173367659251m 
+Epoch:8-80/929, Train mse Loss: 0.0004046934191137552, Cumulated time: 46.06524509191513m 
+Epoch:8-120/929, Train mse Loss: 2.9765855288133025e-05, Cumulated time: 46.28822338581085m 
+Epoch:8-160/929, Train mse Loss: 6.0570553614525124e-05, Cumulated time: 46.510458544890085m 
+Epoch:8-200/929, Train mse Loss: 3.400802597752772e-05, Cumulated time: 46.73027894894282m 
+Epoch:8-240/929, Train mse Loss: 3.2031013688538224e-05, Cumulated time: 46.95371499856313m 
+Epoch:8-280/929, Train mse Loss: 3.288187872385606e-05, Cumulated time: 47.17421403725942m 
+Epoch:8-320/929, Train mse Loss: 7.58790411055088e-05, Cumulated time: 47.39445330699285m 
+Epoch:8-360/929, Train mse Loss: 3.200172432116233e-05, Cumulated time: 47.616620258490244m 
+Epoch:8-400/929, Train mse Loss: 1.7364263840136118e-05, Cumulated time: 47.841540320714316m 
+Epoch:8-440/929, Train mse Loss: 3.398660192033276e-05, Cumulated time: 48.069769605000815m 
+Epoch:8-480/929, Train mse Loss: 2.9950240787002258e-05, Cumulated time: 48.299042999744415m 
+Epoch:8-520/929, Train mse Loss: 2.1027837647125125e-05, Cumulated time: 48.52648419936498m 
+Epoch:8-560/929, Train mse Loss: 2.420451164653059e-05, Cumulated time: 48.75771197080612m 
+Epoch:8-600/929, Train mse Loss: 1.9104874809272587e-05, Cumulated time: 48.98653837045034m 
+Epoch:8-640/929, Train mse Loss: 5.6245487940032035e-05, Cumulated time: 49.214792335033415m 
+Epoch:8-680/929, Train mse Loss: 3.0659022741019726e-05, Cumulated time: 49.44129062891007m 
+Epoch:8-720/929, Train mse Loss: 1.668868208071217e-05, Cumulated time: 49.6680469195048m 
+Epoch:8-760/929, Train mse Loss: 2.7763089747168124e-05, Cumulated time: 49.89787559906642m 
+Epoch:8-800/929, Train mse Loss: 6.038363426341675e-05, Cumulated time: 50.12919429540634m 
+Epoch:8-840/929, Train mse Loss: 0.16545315086841583, Cumulated time: 50.35857404470444m 
+Epoch:8-880/929, Train mse Loss: 3.1430154194822535e-05, Cumulated time: 50.586242564519246m 
+Epoch:8-920/929, Train mse Loss: 2.708370993786957e-05, Cumulated time: 50.81471714178721m 
+--------------------------------------------------------------
+Report:
+              precision    recall  f1-score   support
+
+           0     0.9272    0.9095    0.9183       210
+           1     0.7816    0.8193    0.8000        83
+
+    accuracy                         0.8840       293
+   macro avg     0.8544    0.8644    0.8591       293
+weighted avg     0.8859    0.8840    0.8848       293
+
+avg f1 score: 0.8591346153846153
+Epoch : 8, macro avg f1-score: 85.913 Acc : 88.396 on Valid_set, Spend:0.083 minutes for evaluation
+--------------------------------------------------------------
+Report:
+              precision    recall  f1-score   support
+
+           0     0.9075    0.9191    0.9133      1014
+           1     0.8136    0.7903    0.8018       453
+
+    accuracy                         0.8793      1467
+   macro avg     0.8606    0.8547    0.8575      1467
+weighted avg     0.8785    0.8793    0.8789      1467
+
+avg f1 score: 0.8575347591617091
+Epoch : 8, macro avg f1-score: 85.753 Acc : 87.935 on Test_set, Spend:0.712 minutes for evaluation
+--------------------------------------------------------------
+Epoch:8 completed, Total Train Loss:4.821914220674444, Valid Loss:5.248610385240681, Spend 51.654375700155896m 
+
+**Optimization Finished!,Total spend: 51.654376498858134
+**Valid macro F1: 86.280 at 7 epoch.
+**Test macro F1 when valid best: 85.843

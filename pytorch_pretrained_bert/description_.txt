@@ -1,0 +1,7 @@
+
+here we need to download the original version of the BERT to use embeddings 
+we are using it since this is more editable and using the modules locally direct
+from the source of pytorch bert modeling and load the weigths and vocabulary in spanish
+, so we could load directly the weights to the original architecture this is pytorch
+implementation adapted from tensorflow google original implementation 
+more info here: https://github.com/RubensZimbres/pytorch-pretrained-BERT
